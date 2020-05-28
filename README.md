@@ -1,7 +1,6 @@
 # チェス
 
 プレイ
-
 https://unityroom.com/games/chess
 
 ## ルール
