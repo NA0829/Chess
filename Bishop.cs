@@ -8,7 +8,7 @@ public class Bishop : Chessman {
         Chessman c;
         int i, j;
 
-        // Top Left
+        // Up Left
         i = CurrentX;
         j = CurrentY;
         while (true) {
@@ -28,7 +28,7 @@ public class Bishop : Chessman {
             }
         }
 
-        // Top Right
+        // Up Right
         i = CurrentX;
         j = CurrentY;
         while (true) {
