@@ -1,5 +1,9 @@
 # チェス
+
+プレイ
+
 https://unityroom.com/games/chess
+
 ## ルール
 
 白が先手、黒が後手
