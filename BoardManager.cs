@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.MLAgents;
 using UnityEngine;
 
 public class BoardManager : MonoBehaviour {
@@ -11,6 +12,9 @@ public class BoardManager : MonoBehaviour {
     private Chessman selectedChessman;
     private const float TILE_SIZE = 1.0f;
     private const float TILE_OFFSET = 0.5f;
+
+    public ChessAgent agent;
+    private int[] cells = new int[64];
 
     static int enemy = 6;
     static int king = 0;
@@ -36,10 +40,11 @@ public class BoardManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
         UpdateSelection ();
         DrawChessboard ();
 
+        /* 
         if (Input.GetMouseButtonDown (0)) {
             if (selectionX >= 0 && selectionY >= 0) {
                 if (selectedChessman == null) {
@@ -51,6 +56,7 @@ public class BoardManager : MonoBehaviour {
                 }
             }
         }
+        */
 
     }
 
@@ -223,5 +229,22 @@ public class BoardManager : MonoBehaviour {
         BoardHighlights.Instance.HideHighlights ();
         SpawnAllChessman ();
     }
+
+    public void AreaAction (int move) {
+        //白のターンのとき処理しない
+        if (!isWhiteTurn) {
+            return;
+        }
+        //移動させたいマスに何も駒がないor白であれば動かせる
+        if(move != -1 && (cells[move] == -1 || cells[move] >=enemy)){
+            
+        }
+    }
+
+    //(-2, 2)|(-1, 2)|(0, 2)|(1, 2)|(2, 2)
+    //(-2, 1)|(-1, 1)|(0, 1)|(1, 1)|(2, 1)
+    //(-2, 0)|(-1, 0)|(0, 0)|(1, 0)|(2, 0)
+    //(-2,-1)|(-1,-1)|(0,-1)|(1,-1)|(3,-1)
+    //(-2,-2)|(-1,-2)|(0,-2)|(1,-2)|(2,-2)
 
 }
